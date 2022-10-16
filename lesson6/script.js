@@ -1,11 +1,16 @@
 // First exercise
-const PASSWORD = 'AbCxx12';
 
 const authorize = () => {
     let userFullName;
     let userPassword;
     let isAuthSuccess = false;
     let spaceIndex;
+
+    function validatePassword(userPassword) {
+        let pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+        return pattern.test(userPassword);
+    }
+    
 
     do {
         userFullName = prompt('Введите имя и фамилию через пробел: ');
@@ -26,14 +31,20 @@ const authorize = () => {
         if (!userPassword) {
             alert('Введите пароль');
             continue;
+        } else if ((userPassword == validatePassword(userPassword)) || (userFullName == userPassword.toLowerCase()) || (userPassword == userPassword.toUpperCase()) || (userPassword.length < 6)) {
+            alert('Ваш пароль должен содержать буквы разного регистра, цифры и длина должны быть не менее 6 символов');
+            continue
+        } else {
+            alert('Пароль сохранен');
+            isAuthSuccess = true;
         };
 
-        if (userPassword === PASSWORD) {
-            isAuthSuccess = true;
-        } else {
-            alert('Данные неверны!');
-          continue
-        };
+        // if ((userPassword === true) && (userFullName === true)) {
+        //     isAuthSuccess = true;
+        // } else {
+        //     alert('Вы не ввели все данные!');
+        //   continue
+        // };
 
     } while (!isAuthSuccess);
 
