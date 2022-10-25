@@ -28,7 +28,7 @@ console.log(resultHex);
 
 const maskCreditCard = (cardNumber) => {
     const MASK = '****';
-  let result = '';
+    let result = '';
 
   for(let i = 0, j = 1; i < cardNumber.length; i += 4, j++) {
     const numbers = cardNumber.slice(i, i + 4);
@@ -47,9 +47,9 @@ const maskCreditCard = (cardNumber) => {
       result += maskingResult
 
     }
-
-
-  }
+    }
+    
+    return result
 }
 
 const res = maskCreditCard('5168111147864573');
