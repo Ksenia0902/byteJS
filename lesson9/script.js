@@ -1,13 +1,12 @@
 // 1.1
 
 const numbers = [1, 2, -10, -2, 7];
-const numbersIntoBooleanType = numbers.map((number) => {
-    if (number > 0) {
-        return true;
-    } else {
-        return false;
-    }
-})
+const numbersIntoBooleanType = numbers.map((number) => number > 0 === true)
+    // if (number > 0) {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
 
 console.log(numbers);
 console.log(numbersIntoBooleanType);
@@ -69,10 +68,10 @@ console.log(adultAdmins)
 
 const numbersArray = [1, 10, 17, 24, 45];
 
-const sum = numbersArray.reduce((a, b) => a + b, 0);
-const avg = (sum / numbersArray.length);
+const sum = numbersArray.reduce((a, b) => a + b, 0) / numbersArray.length;
+// const avg = (sum / numbersArray.length);
 
-console.log(avg);
+console.log(sum);
 
 
 // 2
