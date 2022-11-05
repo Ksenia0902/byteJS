@@ -50,11 +50,7 @@ const findExcess = (arr) => {
 
     for (let number of arr) {
         
-        if (number % 2 !== 0) {  
-            arr1.push(number);
-        } else {
-            arr2.push(number);
-        };
+        number % 2 !== 0 ? arr1.push(number) : arr2.push(number);
 
         if ((arr1.length === 1) && (arr1.length < arr2.length)) {
             excess = arr1[0];
