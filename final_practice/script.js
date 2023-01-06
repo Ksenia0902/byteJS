@@ -2,11 +2,11 @@ const actionButton = document.querySelector("button");
 actionButton.addEventListener("click", library);
 
 const books = [
-  { id: 1, author: "Фицджеральд", name: "Великий Гетсби", isReading: false },
-  { id: 2, author: "Толстой", name: "Анна Каренина", isReading: false },
-  { id: 3, author: "Оруел", name: "1984", isReading: false },
-  { id: 4, author: "Сервантес", name: "Дон Кихот", isReading: false },
-  { id: 5, author: "Достоевские", name: "Преступление и наказание", isReading: false, },
+  { id: 1, author: "Фицджеральд", name: "Великий Гетсби", amount: 5 },
+  { id: 2, author: "Толстой", name: "Анна Каренина", amount: 4 },
+  { id: 3, author: "Оруел", name: "1984", amount: 1 },
+  { id: 4, author: "Сервантес", name: "Дон Кихот", amount: 2 },
+  { id: 5, author: "Достоевский", name: "Преступление и наказание", amount: 1 },
 ];
 
 function library() {
@@ -37,37 +37,46 @@ function library() {
 
 const takeBook = () => {
     const availableBookNames = books
-        .filter((book) => !book.isReading)
-        .map((book) => `- "${book.name}"`)
+        .filter((book) => book.amount !== 0)
+        .map((book) => `${book.author}: "${book.name}"`)
         .join('\n')
     
-    let desiredBookName = prompt(`Enter book name: \n${availableBookNames}`);
+    let desiredBookName = prompt(`Enter book name or author: \n${availableBookNames}`);
 
     if (!desiredBookName) {
-        alert('No available books');
+        alert('No book name or author');
 
         return;
     }
 
     desiredBookName = desiredBookName.trim().toLowerCase()
 
-    const desiredBook = books.find((book) => {
-        return book.name.toLowerCase() === desiredBookName
-    })
+
+    let desiredBook = books
+        .find((book) => {
+             return book.name.toLowerCase() === desiredBookName
+        })
 
     if (!desiredBook) {
+        
+        desiredBook = books
+        .find((book) => {
+             return book.author.toLowerCase() === desiredBookName
+        })
+
+    } else {
         alert('No available books');
 
         return;
     }
 
-    if (desiredBook.isReading) {
+    if (desiredBook.amount === 0) {
         alert('Sorry, this book is reading by someone else');
 
         return
     }
 
-    desiredBook.isReading = true;
+    desiredBook.amount--;
 
     alert(`Thank you your book id ${desiredBook.id}`);
 };
@@ -89,13 +98,13 @@ const returnBook = () => {
         return
     };
 
-    if (!currentBook.isReading) {
+    if (currentBook.amount !== 0) {
         alert('This book is not reading now');
 
         return
     };
 
-    currentBook.isReading = false;
+    currentBook.amount++;
     alert(`Thanks, come again! Do you like "${currentBook.name}"? `);
 };
 
@@ -106,7 +115,7 @@ const addBook = () => {
     const newBook = {
         name,
         author,
-        isReading: false,
+        amount: 1,
         id: generateBookId(),
     };
 
