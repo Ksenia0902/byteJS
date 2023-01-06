@@ -135,3 +135,16 @@ const queueTime = (customers, pointsQuantity) => {
 const time = queueTime([5, 3, 4], 2);
 
 console.log(`time`, time)
+
+
+let myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+
+let myArray = myData.split(',');
+console.log(myArray)
+
+let myNewString = myArray.join('; ');
+console.log(myNewString);
+
+let dogNames = ["Rocket","Flash","Bella","Slugger"];
+
+console.log(dogNames.toString())
