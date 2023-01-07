@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Drag and Drop Game</title>
+</head>
+
+<style>
+    .container {
+        height: 500px;
+        position: relative;
+        transition: ease-out 500ms;
+        background: rgb(255, 255, 255);
+        border: 2px solid black;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .ball {
+        background-color: #fff;
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid black;
+        z-index: 2;
+    }
+
+    .hole {
+        border: 2px solid black;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div class="container" id="container">
+        <div class="hole" id="hole"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
