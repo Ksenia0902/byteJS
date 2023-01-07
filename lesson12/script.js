@@ -9,7 +9,7 @@ const createTooltip = (elem, text) => {
 
     const anchorElemCoords = elem.getBoundingClientRect();
     
-    const tooltipTop = anchorElemCoords .top - 5 - tooltip.clientHeight;
+    const tooltipTop = anchorElemCoords.top - 5 - tooltip.clientHeight;
 
     const tooltipLeft = anchorElemCoords.left + anchorElemCoords.width / 2 - tooltip.clientWidth / 2;
 
