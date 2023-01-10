@@ -1,29 +1,23 @@
+const greeting = (isInitial, visitCount = 0) => {
+    const greetingElement = document.createElement('h3');
+    const visitCountElement = document.createElement('h3');
+    greetingElement.innerText = `Welcome!`;
+    visitCountElement.innerText = `You have visited this website ${visitCount} times`;
 
+    document.body.append(greetingElement);
 
-const visitCounter = () => {
-    const greeting = document.createElement('h3');
-greeting.innerHTML = 'Hello!';
-    localStorage.setItem('greeting', 'Welcome!')
-
-    const counterInfo = document.createElement('h3');
-    let numbersOfVisit = localStorage.getItem('onloadCounter');
-
-    createCounter(counterInfo, numbersOfVisit)
-    document.body.append(greeting, counterInfo);
+    if(isInitial){
+        document.body.append(visitCountElement)
+    }
 };
 
-const createCounter = (info, numbs) => {
-    if(numbs === null){
-        numbs = 0;
-    }
-    numbs++;
-    localStorage.setItem('onloadCounter', numbs);
-    
-    if(numbs > 1){
-        info.innerHTML = `You have visited this website ${numbs} times`;
-    }
+if(localStorage.getItem('visits')){
+    const visits = JSON.parse(localStorage.getItem('visits'));
+    const updatedVisits = visits + 1;
+    localStorage.setItem('visits', updatedVisits);
 
-    return info
+    greeting(true, updatedVisits)
+}else {
+    localStorage.setItem('visits', 1);
+    greeting(false)
 }
-
-visitCounter();
