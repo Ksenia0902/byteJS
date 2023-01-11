@@ -41,11 +41,11 @@ const getPostComments = (id, event) => {
 
     commentsXHR.onload = () => {
         let {response} = commentsXHR;
-        if(button.innerText === 'Show comments'){
-            button.innerText = 'Hide comments'
+        if(btn.innerText === 'Show comments'){
+            btn.innerText = 'Hide comments'
             showComments(response, parent)
         } else {
-            button.innerText = 'Show comments';
+            btn.innerText = 'Show comments';
             hideComments(parent)
         }
     } 
