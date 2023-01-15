@@ -10,7 +10,7 @@ class Card{
         const {name} = options
         this.name = name
         this.card = document.createElement('div');
-        this.render()
+        // this.render()
     }
 
     render(){
@@ -145,7 +145,7 @@ class API{
         return vehicle
     }
 
-    sendRequest = async(url) => {
+    sendRequest = async (url) => {
         const response = await this.handleErrors(await fetch(url));
         const res = await response.json();
         return res
@@ -163,7 +163,7 @@ const CARD_MAP = {
 const API_MAP = {
     starship: api.getSpaceship,
     planet: api.getPlanet,
-    vehicle: api.getVehicles
+    vehicle: api.getVehicles,
 }
 
 const toggleButtonLoading = () => {
@@ -189,7 +189,7 @@ const handleSubmit = async (event) => {
         card.show()
     } catch (error) {
         alert(error.message)
-        location.reload()
+        // location.reload()
     }
     
 }
